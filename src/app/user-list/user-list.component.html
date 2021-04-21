@@ -1,0 +1,71 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="left-col col-xl-6 smaller-white">
+      <h2>List of created users</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of response_content">
+            <td>
+              {{ user.firstname + " " + user.lastname }}<br /><small>{{
+                user.email
+              }}</small>
+            </td>
+            <td>{{ user.role }}</td>
+            <td>
+              <button
+                type="button"
+                id="show-details"
+                class="btn"
+                data-toggle="modal"
+                data-target="#myModal"
+                (click)="selectContact(user.email)"
+              >
+                Show Details
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <img
+        src="/assets/img/pink_meow.jpg"
+        class="modal-img-top"
+        alt="any_icon"
+      />
+      <div class="modal-header">
+                    <h4 class="modal-title"
+                        id="exampleModalLabel">
+                        {{ firstname + " " + lastname }}<br /><small>{{
+                email
+              }}</small>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                  <h2>{{ role }}</h2>
+                    <p id="modal_body">
+                      <ul>
+                        <li *ngFor="let desc of description">{{desc.name + ' : ' + desc.description}} </li>
+                      </ul>
+                   
+                </div>
+      <div class="modal-footer">
+        <button type="button" id="edit-user" class="btn">Edit</button>
+        <button type="button" id="delete-user" class="btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

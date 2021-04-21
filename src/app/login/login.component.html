@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="smaller-white">
+    <div class="image-container">
+      <img
+        src="/assets/img/logo3.png"
+        class="rounded-circle img-fluid"
+        alt="any_icon"
+      />
+    </div>
+    <div class="input-container">
+      <form [formGroup]='userForm'
+        class="form-group"
+        (ngSubmit)="getLogin()"
+      >
+        <input
+          type="text"
+          placeholder="Enter your email"
+          class="form-control form-control-lg"
+          id="login-email"
+          required
+          formControlName="email"
+          name = "email"
+        />
+        <div class="invalid-feedback">Please Enter the correct password!</div>
+
+        <input
+          type="password"
+          placeholder="Enter your password"
+          class="form-control form-control-lg"
+          id="login-password"
+          required
+          formControlName="password"
+        />
+        <div class="invalid-feedback">Please Enter the correct password!</div>
+
+        <button
+          type="submit"
+          id="sign-in"
+          class="btn form-control-lg btn-block form-control"
+        >
+          SIGN IN
+        </button>
+      </form>
+      <p class="text-right"><small>Need Help?</small></p>
+      <p id="no-account">Don't have an account yet?</p>
+      <a routerLink="/register" id="create-account">Create an account</a>
+    </div>
+  </div>
+</div>

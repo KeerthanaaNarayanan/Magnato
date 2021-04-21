@@ -1,0 +1,27 @@
+.navbar {
+  background-color: #16b6fc;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  color: #fafbfc;
+}
+
+button {
+  text-decoration: none;
+  color: #fafbfc;
+  font-weight: bolder;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+button:active {
+  background-color: #3e515f;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #88d0f5;
+  color: #fafbfc;
+  text-decoration: none;
+}
