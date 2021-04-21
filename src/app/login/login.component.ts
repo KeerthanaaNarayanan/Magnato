@@ -2,14 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
 import {
-  FormControl,
   FormBuilder,
-  Validators,
   FormGroup,
-  ReactiveFormsModule,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +13,6 @@ import { HomeComponent } from '../home/home.component';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  // emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
-  // pwdPattern = '^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?!.*s).{6,12}$';
   login_url = this.dataservice.base_url + 'login';
   reponse_content;
   request_body;
@@ -67,7 +61,3 @@ export class LoginComponent implements OnInit {
       );
   }
 }
-
-// error(message: string, options?: any) {
-        // this.alert(new Alert({ ...options, type: AlertType.Error, message }));
-    // }
