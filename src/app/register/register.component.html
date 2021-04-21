@@ -8,30 +8,36 @@
       />
     </div>
     <div class="input-container">
-      <form class="form-group">
+      <form class="form-group"
+      [formGroup] = "createForm"
+      (ngSubmit) = "createUser()">
         <input
           type="text"
           placeholder="First name"
           class="form-control form-control-lg"
+          formControlName="firstname"
         />
         <input
           type="text"
           placeholder="Last name"
           class="form-control form-control-lg"
+          formControlName="lastname"
         />
         <input
           type="email"
           placeholder="Email"
           class="form-control form-control-lg"
+          formControlName="email"
         />
 
         <input
           type="password"
           placeholder="Enter your password"
           class="form-control form-control-lg"
+          formControlName="password"
         />
         <button
-          type="button"
+          type="submit"
           id="sign-in"
           class="btn form-control-lg btn-block form-control"
         >
