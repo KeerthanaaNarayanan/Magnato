@@ -15,25 +15,62 @@ export class UserListComponent implements OnInit {
   role;
   email;
   description;
+  list_url = 'list-users';
+  show_details = 'show-details/email/';
+  delete_user = 'delete-user/email/';
+  requestOptions: Object = {
+    responseType: 'text',
+  };
+  reponse_content;
 
   constructor(public dataService: DataService, private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get('http://127.0.0.1:5000/list-users').subscribe((data) => {
-      this.response_content = data as JSON;
-    });
+    this.http
+      .get(this.dataService.base_url + this.list_url)
+      .subscribe((data) => {
+        this.response_content = data as JSON;
+      });
     return this.response_content;
   }
-  public selectContact(email) {
-    this.http.get('http://127.0.0.1:5000/show-details/email/' + email).subscribe((data) => {
-      this.details = data as JSON;
-      this.firstname = this.details.firstname;
-      this.lastname = this.details.lastname;
-      this.email = this.details.email;
-      this.role = this.details.role;
-      this.description = this.details.description;
+  public selectUser(email) {
+    this.http
+      .get(this.dataService.base_url + this.show_details + email)
+      .subscribe((data) => {
+        this.details = data as JSON;
+        this.firstname = this.details.firstname;
+        this.lastname = this.details.lastname;
+        this.email = this.details.email;
+        this.role = this.details.role;
+        this.description = this.details.description;
+      });
+    return this.details;
+  }
 
-    });
+  notify(response) {
+    if (response == 'User deleted successfully') {
+      location.reload();
+      alert(response);
+    } else {
+      alert(response);
+    }
+  }
+
+  DeleteUser(email) {
+    console.log(email);
+    this.http.delete(this.dataService.base_url + this.delete_user + email,
+      this.requestOptions).subscribe(
+        (data) => {
+          this.reponse_content = data;
+          this.notify(this.reponse_content);
+          console.log(this.reponse_content);
+        },
+        (error: any) => {
+          this.reponse_content = error;
+          this.notify(this.reponse_content);
+          console.log(this.reponse_content);
+        }
+      );
     return this.details;
   }
 }
