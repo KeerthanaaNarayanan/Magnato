@@ -26,7 +26,7 @@
                 class="btn"
                 data-toggle="modal"
                 data-target="#myModal"
-                (click)="selectContact(user.email)"
+                (click)="selectUser(user.email)"
               >
                 Show Details
               </button>
@@ -59,11 +59,11 @@
                       <ul>
                         <li *ngFor="let desc of description">{{desc.name + ' : ' + desc.description}} </li>
                       </ul>
-                   
+
                 </div>
       <div class="modal-footer">
         <button type="button" id="edit-user" class="btn">Edit</button>
-        <button type="button" id="delete-user" class="btn">Delete</button>
+        <button type="button" id="delete-user" class="btn" (click)=DeleteUser(email)>Delete</button>
       </div>
     </div>
   </div>
