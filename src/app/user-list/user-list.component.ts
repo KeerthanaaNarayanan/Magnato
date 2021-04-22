@@ -57,7 +57,6 @@ export class UserListComponent implements OnInit {
   }
 
   DeleteUser(email) {
-    console.log(email);
     this.http.delete(this.dataService.base_url + this.delete_user + email,
       this.requestOptions).subscribe(
         (data) => {
